@@ -5,6 +5,9 @@
   "EditModal": {
     "description": "Auto imported from components/EditModal.vue"
   },
+  "LoadingSpinner": {
+    "description": "Auto imported from components/LoadingSpinner.vue"
+  },
   "Pagination": {
     "description": "Auto imported from components/Pagination.vue"
   },

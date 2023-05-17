@@ -36,6 +36,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/tailwindcss',
     '@nuxtjs/eslint-module',
+    '@nuxtjs/router',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

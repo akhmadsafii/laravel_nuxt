@@ -39,7 +39,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .pagination {
   display: flex;
@@ -52,9 +51,15 @@ export default {
   border: 1px solid #ccc;
   cursor: pointer;
   background-color: #fff;
+  transition: background-color 0.3s ease; /* Transisi warna latar belakang saat hover */
 }
 
 .pagination-item.active {
-  background-color: #ccc;
+  background-color: #4a9eff; /* Warna latar belakang saat aktif */
+  color: #fff; /* Warna teks saat aktif */
+}
+
+.pagination-item:hover {
+  background-color: #e0e0e0; /* Warna latar belakang saat hover */
 }
 </style>

@@ -8,5 +8,6 @@ You can directly use them in pages and other components without the need to impo
 
 - `<Card>` | `<card>` (components/Card.vue)
 - `<EditModal>` | `<edit-modal>` (components/EditModal.vue)
+- `<LoadingSpinner>` | `<loading-spinner>` (components/LoadingSpinner.vue)
 - `<Pagination>` | `<pagination>` (components/Pagination.vue)
 - `<SearchIcon>` | `<search-icon>` (components/SearchIcon.vue)

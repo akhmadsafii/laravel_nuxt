@@ -1,5 +1,6 @@
 export { default as Card } from '../../components/Card.vue'
 export { default as EditModal } from '../../components/EditModal.vue'
+export { default as LoadingSpinner } from '../../components/LoadingSpinner.vue'
 export { default as Pagination } from '../../components/Pagination.vue'
 export { default as SearchIcon } from '../../components/SearchIcon.vue'
 

@@ -5,10 +5,10 @@
       <div class="flex items-center">
         <div class="relative">
           <input
+            v-model="searchTerm"
+            class="border border-gray-300 rounded-l px-2 py-1 pr-8"
             type="text"
             placeholder="Cari"
-            class="border border-gray-300 rounded-l px-2 py-1 pr-8"
-            v-model="searchTerm"
             @input="handleSearch"
           />
           <div class="absolute inset-y-0 right-0 flex items-center pr-2">
@@ -25,7 +25,13 @@
         'gap-4',
       ]"
     >
-      <template v-if="filteredNotes.length > 0">
+      <div v-if="isLoading" class="col-span-2 flex justify-center">
+        <LoadingSpinner class="w-12 h-12" />
+      </div>
+      <div v-else-if="error" class="col-span-2">
+        <p>{{ error }}</p>
+      </div>
+      <template v-else>
         <div v-for="note in paginatedNotes" :key="note.id" class="col-md-6">
           <Card
             :note="note"
@@ -34,7 +40,10 @@
           />
         </div>
       </template>
-      <div v-else class="flex items-center justify-center">
+      <div
+        v-if="filteredNotes.length === 0 && !isLoading"
+        class="flex items-center justify-center"
+      >
         <div class="text-gray-500">
           <svg
             class="w-16 h-16 mx-auto mb-4 fill-current"
@@ -52,8 +61,9 @@
     </div>
 
     <Pagination
-      :totalItems="filteredNotes.length"
-      :perPage="perPage"
+      :total-items="filteredNotes.length"
+      :per-page="perPage"
+      :current-page="currentPage"
       @pageChange="handlePageChange"
     />
     <EditModal
@@ -64,18 +74,19 @@
     />
   </div>
 </template>
-
 <script>
 import axios from 'axios'
 import Card from '@/components/Card.vue'
 import Pagination from '@/components/Pagination.vue'
 import EditModal from '@/components/EditModal.vue'
+import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
 export default {
   components: {
     Card,
     Pagination,
     EditModal,
+    LoadingSpinner,
   },
   data() {
     return {
@@ -85,6 +96,8 @@ export default {
       searchTerm: '',
       showEditModal: false,
       selectedNote: null,
+      isLoading: false,
+      error: null,
     }
   },
   computed: {
@@ -117,25 +130,30 @@ export default {
   },
   methods: {
     fetchNotes() {
+      this.isLoading = true
+      this.error = null
       axios
         .get(`${process.env.apiUrl}/notes`)
         .then((response) => {
-          console.log(response.data)
           this.notes = response.data
         })
         .catch((error) => {
-          console.log(error)
+          this.error =
+            'Terjadi kesalahan saat mengambil catatan: ' + error.message
+        })
+        .finally(() => {
+          this.isLoading = false
         })
     },
     deleteNote(noteId) {
       axios
         .delete(`${process.env.apiUrl}/notes/${noteId}`)
         .then(() => {
-          // Remove the note from the notes array
           this.notes = this.notes.filter((note) => note.id !== noteId)
         })
         .catch((error) => {
-          console.log(error)
+          this.error =
+            'Terjadi kesalahan saat menghapus catatan: ' + error.message
         })
     },
     openEditModal(noteId) {
@@ -143,12 +161,10 @@ export default {
       this.showEditModal = true
     },
     saveNote(editedNote) {
-      // Save the edited note to the server
       axios
         .put(`${process.env.apiUrl}/notes/${editedNote.id}`, editedNote)
         .then((response) => {
           const updatedNote = response.data
-          // Update the note in the notes array
           const index = this.notes.findIndex(
             (note) => note.id === updatedNote.id
           )
@@ -158,7 +174,8 @@ export default {
           this.closeEditModal()
         })
         .catch((error) => {
-          console.log(error)
+          this.error =
+            'Terjadi kesalahan saat menyimpan catatan: ' + error.message
         })
     },
     closeEditModal() {
