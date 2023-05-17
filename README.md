@@ -1,63 +1,52 @@
-# Panduan Penggunaan Laravel
+# Laravel Usage Guide
 
-Ini adalah panduan langkah demi langkah untuk mengatur dan menjalankan aplikasi Laravel dengan Nuxt.js.
+This is a step-by-step guide to setting up and running a Laravel application with Nuxt.js.
 
-## Persiapan Awal
+## Initial Preparation
 
-1. Pastikan mesin Anda memenuhi persyaratan sistem untuk menjalankan Laravel. Anda memerlukan PHP, MySQL, dan komponen pendukung lainnya. Lihat dokumentasi Laravel untuk informasi lebih lanjut tentang persyaratan sistem.
+1. Make sure your machine meets the system requirements to run Laravel. You need PHP, MySQL, and other supporting components. See the Laravel documentation for more information on system requirements.
 
-2. Buatlah database baru dengan nama "laravel_nuxt" di MySQL atau sesuaikan dengan preferensi Anda.
+2. Create a new database named "laravel_nuxt" in MySQL or adjust to your preference.
 
-## Instalasi dan Konfigurasi
+## Installation and Configuration
 
-1. Salin file `.env.example` menjadi `.env` dengan perintah berikut:
-cp .env.example .env
+1. Copy the `.env.example` file to `.env` with the following command:
+`cp .env.example .env`
 
-
-2. Buka file `.env` dan konfigurasi pengaturan database. Sesuaikan parameter seperti berikut:
-DB_CONNECTION=mysql
+2. Open the `.env` file and configure the database settings. Adjust the parameters as follows:
+`DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=laravel_nuxt
 DB_USERNAME=root
-DB_PASSWORD=
+DB_PASSWORD=`
 
+Be sure to fill in `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD` according to your database settings.
 
-Pastikan untuk mengisi `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` sesuai dengan pengaturan database Anda.
+3. Run the following command to install all PHP dependencies via Composer:
+`composer install`
 
-3. Jalankan perintah berikut untuk menginstal semua dependensi PHP melalui Composer:
+4. Run the following command to generate the application key:
+`php artisan key:generate`
 
-composer install
+5. Run the following command to run migrations and seed the database with seed data:
+`php artisan migrate --seed`
 
-4. Jalankan perintah berikut untuk menghasilkan kunci aplikasi:
+This will create the necessary tables in the database and populate it with initial seed data.
 
-php artisan key:generate
+## Running the Application
 
-5. Jalankan perintah berikut untuk menjalankan migrasi dan mengisi database dengan data seed:
+1. Run the Laravel development server with the following command:
+`php artisan serve --port=8000`
 
-php artisan migrate --seed
+This will run a local development server at `http://localhost:8000`.
 
-Ini akan membuat tabel-tabel yang diperlukan dalam database dan mengisi data seed awal.
+2. Open a browser and go to `http://localhost:8000` to see the running Laravel application.
 
-## Menjalankan Aplikasi
+## Additional Notes
 
-1. Jalankan server pengembangan Laravel dengan perintah berikut:
+- Make sure your MySQL server is running.
+- If you encounter problems running the `php artisan` command, make sure PHP has been added to your system's PATH.
 
-php artisan serve --port=8000
-
-
-Ini akan menjalankan server pengembangan lokal di `http://localhost:8000`.
-
-2. Buka browser dan akses `http://localhost:8000` untuk melihat aplikasi Laravel yang berjalan.
-
-## Catatan Tambahan
-
-- Pastikan MySQL server Anda berjalan.
-- Jika Anda mengalami masalah dalam menjalankan perintah `php artisan`, pastikan PHP telah ditambahkan ke PATH sistem Anda.
-
-Ini adalah panduan sederhana untuk menjalankan aplikasi Laravel dengan Nuxt.js. Anda dapat menyesuaikan langkah-langkah ini sesuai dengan kebutuhan proyek Anda. Untuk informasi lebih lanjut tentang pengembangan dengan Laravel, Anda dapat merujuk ke dokumentasi resmi Laravel.
-
-
-Salin konten tersebut dan simpan dalam file readme.md menggunakan teks editor Anda. Pastikan untuk menyimpan file dengan ekstensi `.md` untuk mendapatkan format markdown yang benar.
-
-
+This is a simple guide to running a Laravel application with Nuxt.js. You can customize these steps according to your project's needs. For more information on developing with Laravel, you can refer to the official Laravel documentation.
+Copy this content and save it in a readme.md file using your text editor. Be sure to save the file with the .md extension to get the correct markdown formatting.
