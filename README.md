@@ -14,12 +14,12 @@ This is a step-by-step guide to setting up and running a Laravel application wit
 `cp .env.example .env`
 
 2. Open the `.env` file and configure the database settings. Adjust the parameters as follows:
-`DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=laravel_nuxt
-DB_USERNAME=root
-DB_PASSWORD=`
+ - DB_CONNECTION=mysql
+ - DB_HOST=127.0.0.1
+ - DB_PORT=3306
+ - DB_DATABASE=laravel_nuxt
+ - D B_USERNAME=root
+ - DB_PASSWORD=
 
 Be sure to fill in `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD` according to your database settings.
 
