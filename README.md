@@ -50,3 +50,7 @@ This will run a local development server at `http://localhost:8000`.
 
 This is a simple guide to running a Laravel application with Nuxt.js. You can customize these steps according to your project's needs. For more information on developing with Laravel, you can refer to the official Laravel documentation.
 Copy this content and save it in a readme.md file using your text editor. Be sure to save the file with the .md extension to get the correct markdown formatting.
+
+## Nuxt.js installation guide
+
+For Nuxt.js installation guide, please navigate to the 'frontend' folder.
