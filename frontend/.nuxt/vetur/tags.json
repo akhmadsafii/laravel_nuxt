@@ -1,0 +1,14 @@
+{
+  "Card": {
+    "description": "Auto imported from components/Card.vue"
+  },
+  "EditModal": {
+    "description": "Auto imported from components/EditModal.vue"
+  },
+  "Pagination": {
+    "description": "Auto imported from components/Pagination.vue"
+  },
+  "SearchIcon": {
+    "description": "Auto imported from components/SearchIcon.vue"
+  }
+}

@@ -36,6 +36,7 @@ class NoteController extends Controller
 
     public function update(Request $request, $id)
     {
+        // tes
         $note = Note::find($id);
         if (!$note) {
             return response()->json(['message' => 'Note not found'], 404);
